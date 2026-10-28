@@ -1,0 +1,238 @@
+{
+  "generated_at": "2026-10-05",
+  "dataset": "data\\eval_cases_v2.csv",
+  "retrieval": {
+    "cases": 16,
+    "top1_hits": 16,
+    "top1_accuracy": 1.0,
+    "top3_hits": 16,
+    "top3_recall": 1.0,
+    "details": [
+      {
+        "id": "E001",
+        "expected": "食积停滞",
+        "top1": "食积停滞",
+        "top3": [
+          "食积停滞",
+          "心脾两虚",
+          "胃火旺盛"
+        ],
+        "top1_score": 0.6366
+      },
+      {
+        "id": "E002",
+        "expected": "痰湿咳嗽",
+        "top1": "痰湿咳嗽",
+        "top3": [
+          "痰湿咳嗽",
+          "风寒感冒",
+          "肺肾阴虚"
+        ],
+        "top1_score": 0.796
+      },
+      {
+        "id": "E003",
+        "expected": "风热感冒",
+        "top1": "风热感冒",
+        "top3": [
+          "风热感冒",
+          "风寒感冒",
+          "胃火旺盛"
+        ],
+        "top1_score": 0.7422
+      },
+      {
+        "id": "E004",
+        "expected": "风寒感冒",
+        "top1": "风寒感冒",
+        "top3": [
+          "风寒感冒",
+          "风热感冒",
+          "痰湿咳嗽"
+        ],
+        "top1_score": 0.7618
+      },
+      {
+        "id": "E005",
+        "expected": "肝火上炎",
+        "top1": "肝火上炎",
+        "top3": [
+          "肝火上炎",
+          "心脾两虚",
+          "心火亢盛"
+        ],
+        "top1_score": 0.8296
+      },
+      {
+        "id": "E006",
+        "expected": "心脾两虚",
+        "top1": "心脾两虚",
+        "top3": [
+          "心脾两虚",
+          "气血两虚",
+          "食积停滞"
+        ],
+        "top1_score": 0.8123
+      },
+      {
+        "id": "E007",
+        "expected": "胃火旺盛",
+        "top1": "胃火旺盛",
+        "top3": [
+          "胃火旺盛",
+          "风热感冒",
+          "脾胃虚寒"
+        ],
+        "top1_score": 0.7513
+      },
+      {
+        "id": "E008",
+        "expected": "肝气郁结",
+        "top1": "肝气郁结",
+        "top3": [
+          "肝气郁结",
+          "风热感冒",
+          "心火亢盛"
+        ],
+        "top1_score": 0.5927
+      },
+      {
+        "id": "E009",
+        "expected": "气血两虚",
+        "top1": "气血两虚",
+        "top3": [
+          "气血两虚",
+          "心脾两虚",
+          "肾阴亏虚"
+        ],
+        "top1_score": 0.7756
+      },
+      {
+        "id": "E010",
+        "expected": "湿热泄泻",
+        "top1": "湿热泄泻",
+        "top3": [
+          "湿热泄泻",
+          "心火亢盛",
+          "食积停滞"
+        ],
+        "top1_score": 0.6021
+      },
+      {
+        "id": "E011",
+        "expected": "肾阴亏虚",
+        "top1": "肾阴亏虚",
+        "top3": [
+          "肾阴亏虚",
+          "肺肾阴虚",
+          "肝火上炎"
+        ],
+        "top1_score": 0.7986
+      },
+      {
+        "id": "E012",
+        "expected": "脾胃虚寒",
+        "top1": "脾胃虚寒",
+        "top3": [
+          "脾胃虚寒",
+          "风寒感冒",
+          "风热感冒"
+        ],
+        "top1_score": 0.5955
+      },
+      {
+        "id": "E013",
+        "expected": "心火亢盛",
+        "top1": "心火亢盛",
+        "top3": [
+          "心火亢盛",
+          "湿热泄泻",
+          "心脾两虚"
+        ],
+        "top1_score": 0.7449
+      },
+      {
+        "id": "E014",
+        "expected": "风寒湿痹（关节痛）",
+        "top1": "风寒湿痹（关节痛）",
+        "top3": [
+          "风寒湿痹（关节痛）",
+          "脾胃虚寒",
+          "肺肾阴虚"
+        ],
+        "top1_score": 0.7085
+      },
+      {
+        "id": "E015",
+        "expected": "肺肾阴虚",
+        "top1": "肺肾阴虚",
+        "top3": [
+          "肺肾阴虚",
+          "肾阴亏虚",
+          "痰湿咳嗽"
+        ],
+        "top1_score": 0.6968
+      },
+      {
+        "id": "E018",
+        "expected": "食积停滞",
+        "top1": "食积停滞",
+        "top3": [
+          "食积停滞",
+          "心脾两虚",
+          "胃火旺盛"
+        ],
+        "top1_score": 0.524
+      }
+    ]
+  },
+  "safety": {
+    "true_positive": 1,
+    "false_positive": 0,
+    "true_negative": 19,
+    "false_negative": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "negation_cases": 2,
+    "negation_false_positives": 0
+  },
+  "low_confidence": {
+    "threshold": 0.2,
+    "cases": 2,
+    "hits": 2,
+    "accuracy": 1.0,
+    "details": [
+      {
+        "id": "E019",
+        "top1_score": 0.1177,
+        "terms": [],
+        "predicted_low": true
+      },
+      {
+        "id": "E020",
+        "top1_score": 0.1599,
+        "terms": [
+          "咽痛"
+        ],
+        "predicted_low": true
+      }
+    ]
+  },
+  "structured_slots": {
+    "checks": 12,
+    "hits": 12,
+    "accuracy": 1.0
+  },
+  "rag_safety": {
+    "checks": {
+      "source_citation": true,
+      "review_boundary": true,
+      "urgent_triage": true,
+      "low_confidence": true,
+      "no_forced_prescription": true
+    },
+    "passed": 5,
+    "total": 5,
+    "all_passed": true
+  }
+}

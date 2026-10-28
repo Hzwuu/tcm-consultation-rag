@@ -1,0 +1,1014 @@
+{
+  "dataset": "data\\accuracy_cases_v1.csv",
+  "dataset_size": 40,
+  "caveat": "自建测试集：用例由知识库症状改写、口语化改写和人工场景编写，只代表本测试集上的表现，不等于临床准确率，也不代表真实用户分布。",
+  "retrieval": {
+    "cases": 30,
+    "top1_hits": 30,
+    "top1_accuracy": 1.0,
+    "top3_hits": 30,
+    "top3_recall": 1.0,
+    "over_refusal_count": 0,
+    "by_type": {
+      "paraphrase": {
+        "total": 15,
+        "top1": 15,
+        "top3": 15
+      },
+      "typo": {
+        "total": 2,
+        "top1": 2,
+        "top3": 2
+      },
+      "colloquial": {
+        "total": 13,
+        "top1": 13,
+        "top3": 13
+      }
+    },
+    "details": [
+      {
+        "id": "A001",
+        "query": "发烧明显，怕风，喉咙红痛，流黄浓鼻涕，口渴想喝凉水",
+        "case_type": "paraphrase",
+        "expected": "风热感冒",
+        "top1": "风热感冒",
+        "top3": [
+          "风热感冒",
+          "风寒感冒",
+          "胃火旺盛"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.7164,
+        "terms": [
+          "发热",
+          "怕冷",
+          "咽痛",
+          "流鼻涕",
+          "喜冷饮"
+        ],
+        "corrections": []
+      },
+      {
+        "id": "A002",
+        "query": "发烧怕风，咽通，黄鼻涕，想喝凉水",
+        "case_type": "typo",
+        "expected": "风热感冒",
+        "top1": "风热感冒",
+        "top3": [
+          "风热感冒",
+          "风寒感冒",
+          "脾胃虚寒"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.4942,
+        "terms": [
+          "发热",
+          "怕冷",
+          "咽痛",
+          "流鼻涕",
+          "喜冷饮"
+        ],
+        "corrections": [
+          "咽通→咽痛"
+        ]
+      },
+      {
+        "id": "A003",
+        "query": "怕冷，发热轻，无汗，流清鼻涕，咳白稀痰，不想喝水",
+        "case_type": "paraphrase",
+        "expected": "风寒感冒",
+        "top1": "风寒感冒",
+        "top3": [
+          "风寒感冒",
+          "风热感冒",
+          "痰湿咳嗽"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.737,
+        "terms": [
+          "怕冷",
+          "发热",
+          "无汗",
+          "流鼻涕",
+          "咳嗽",
+          "不渴"
+        ],
+        "corrections": []
+      },
+      {
+        "id": "A004",
+        "query": "怕泠，低烧，没有汗，流清鼻子，不想喝水",
+        "case_type": "typo",
+        "expected": "风寒感冒",
+        "top1": "风寒感冒",
+        "top3": [
+          "风寒感冒",
+          "风热感冒",
+          "肾阴亏虚"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.4891,
+        "terms": [
+          "怕冷",
+          "发热",
+          "无汗",
+          "流鼻涕",
+          "不渴"
+        ],
+        "corrections": [
+          "怕泠→怕冷"
+        ]
+      },
+      {
+        "id": "A005",
+        "query": "胃里烧灼，口臭严重，牙龈肿痛，爱喝冷饮，大便干结",
+        "case_type": "paraphrase",
+        "expected": "胃火旺盛",
+        "top1": "胃火旺盛",
+        "top3": [
+          "胃火旺盛",
+          "风热感冒",
+          "脾胃虚寒"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.6564,
+        "terms": [
+          "胃痛",
+          "口臭",
+          "咽痛",
+          "喜冷饮",
+          "便秘"
+        ],
+        "corrections": [
+          "肿痛→咽痛"
+        ]
+      },
+      {
+        "id": "A006",
+        "query": "口臭，牙龈肿痛，爱喝冷饮，大便干",
+        "case_type": "colloquial",
+        "expected": "胃火旺盛",
+        "top1": "胃火旺盛",
+        "top3": [
+          "胃火旺盛",
+          "风热感冒",
+          "脾胃虚寒"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.6502,
+        "terms": [
+          "口臭",
+          "咽痛",
+          "喜冷饮",
+          "便秘"
+        ],
+        "corrections": [
+          "肿痛→咽痛"
+        ]
+      },
+      {
+        "id": "A007",
+        "query": "情绪低落，爱叹气，两胁胀痛，喉咙有异物感",
+        "case_type": "paraphrase",
+        "expected": "肝气郁结",
+        "top1": "肝气郁结",
+        "top3": [
+          "肝气郁结",
+          "风热感冒",
+          "痰湿咳嗽"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.5585,
+        "terms": [
+          "发热",
+          "胸闷",
+          "咽痛"
+        ],
+        "corrections": [
+          "低落→低热",
+          "喉咙有→喉咙痛"
+        ]
+      },
+      {
+        "id": "A008",
+        "query": "总叹气，胸闷胁胀，乳房胀痛，喉咙有异物",
+        "case_type": "colloquial",
+        "expected": "肝气郁结",
+        "top1": "肝气郁结",
+        "top3": [
+          "肝气郁结",
+          "食积停滞",
+          "痰湿咳嗽"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.4211,
+        "terms": [
+          "胸闷",
+          "胃胀",
+          "咽痛"
+        ],
+        "corrections": [
+          "房胀→胃胀",
+          "喉咙有→喉咙痛"
+        ]
+      },
+      {
+        "id": "A009",
+        "query": "面色苍白，头晕心慌，浑身乏力，手脚发麻，记性差",
+        "case_type": "paraphrase",
+        "expected": "气血两虚",
+        "top1": "气血两虚",
+        "top3": [
+          "气血两虚",
+          "心脾两虚",
+          "肾阴亏虚"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.773,
+        "terms": [
+          "面色苍白",
+          "头晕",
+          "心慌",
+          "乏力",
+          "发热",
+          "健忘"
+        ],
+        "corrections": [
+          "发麻→发热"
+        ]
+      },
+      {
+        "id": "A010",
+        "query": "脸色差，头晕心慌，容易累，手脚麻",
+        "case_type": "colloquial",
+        "expected": "气血两虚",
+        "top1": "气血两虚",
+        "top3": [
+          "气血两虚",
+          "心脾两虚",
+          "肝火上炎"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.6315,
+        "terms": [
+          "面色苍白",
+          "头晕",
+          "心慌",
+          "乏力"
+        ],
+        "corrections": []
+      },
+      {
+        "id": "A011",
+        "query": "腹痛就拉肚子，大便急迫，黄褐臭秽，肛门灼热，小便黄",
+        "case_type": "paraphrase",
+        "expected": "湿热泄泻",
+        "top1": "湿热泄泻",
+        "top3": [
+          "湿热泄泻",
+          "心火亢盛",
+          "食积停滞"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.5918,
+        "terms": [
+          "腹泻",
+          "便秘",
+          "大便酸臭",
+          "发热",
+          "尿黄"
+        ],
+        "corrections": [
+          "便急→便秘",
+          "灼热→发热"
+        ]
+      },
+      {
+        "id": "A012",
+        "query": "拉肚子很急，大便臭秽，肛门灼热，小便发黄",
+        "case_type": "colloquial",
+        "expected": "湿热泄泻",
+        "top1": "湿热泄泻",
+        "top3": [
+          "湿热泄泻",
+          "食积停滞",
+          "胃火旺盛"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.5374,
+        "terms": [
+          "腹泻",
+          "大便酸臭",
+          "发热",
+          "便秘"
+        ],
+        "corrections": [
+          "灼热→发热",
+          "便发→便秘"
+        ]
+      },
+      {
+        "id": "A013",
+        "query": "心慌失眠，多梦易醒，食欲不振，饭后腹胀",
+        "case_type": "paraphrase",
+        "expected": "心脾两虚",
+        "top1": "心脾两虚",
+        "top3": [
+          "心脾两虚",
+          "食积停滞",
+          "肝火上炎"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.7641,
+        "terms": [
+          "心慌",
+          "失眠",
+          "食欲不振",
+          "胃胀"
+        ],
+        "corrections": []
+      },
+      {
+        "id": "A014",
+        "query": "睡不好多梦，心慌，不想吃饭，饭后肚子胀",
+        "case_type": "colloquial",
+        "expected": "心脾两虚",
+        "top1": "心脾两虚",
+        "top3": [
+          "心脾两虚",
+          "食积停滞",
+          "肝火上炎"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.53,
+        "terms": [
+          "失眠",
+          "多梦",
+          "心慌",
+          "食欲不振",
+          "胃胀"
+        ],
+        "corrections": []
+      },
+      {
+        "id": "A015",
+        "query": "腰膝酸软，头晕耳鸣，手脚心发热，夜间盗汗，口干",
+        "case_type": "paraphrase",
+        "expected": "肾阴亏虚",
+        "top1": "肾阴亏虚",
+        "top3": [
+          "肾阴亏虚",
+          "肺肾阴虚",
+          "肝火上炎"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.7555,
+        "terms": [
+          "腰膝酸软",
+          "头晕",
+          "潮热",
+          "盗汗",
+          "口渴"
+        ],
+        "corrections": []
+      },
+      {
+        "id": "A016",
+        "query": "腰酸，耳鸣，手足心热，睡着出汗，口干咽燥",
+        "case_type": "colloquial",
+        "expected": "肾阴亏虚",
+        "top1": "肾阴亏虚",
+        "top3": [
+          "肾阴亏虚",
+          "肺肾阴虚",
+          "风热感冒"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.6769,
+        "terms": [
+          "腰膝酸软",
+          "潮热",
+          "盗汗",
+          "口渴"
+        ],
+        "corrections": []
+      },
+      {
+        "id": "A017",
+        "query": "咳嗽反复，痰多色白质黏，早晨加重，胸闷身重",
+        "case_type": "paraphrase",
+        "expected": "痰湿咳嗽",
+        "top1": "痰湿咳嗽",
+        "top3": [
+          "痰湿咳嗽",
+          "风寒感冒",
+          "肺肾阴虚"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.797,
+        "terms": [
+          "咳嗽",
+          "痰多",
+          "痰湿身重",
+          "胸闷"
+        ],
+        "corrections": [
+          "加重→身重"
+        ]
+      },
+      {
+        "id": "A018",
+        "query": "咳嗽老不好，白痰多，胸闷身体沉重",
+        "case_type": "colloquial",
+        "expected": "痰湿咳嗽",
+        "top1": "痰湿咳嗽",
+        "top3": [
+          "痰湿咳嗽",
+          "风寒感冒",
+          "肺肾阴虚"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.6921,
+        "terms": [
+          "咳嗽",
+          "痰多",
+          "胸闷",
+          "痰湿身重"
+        ],
+        "corrections": []
+      },
+      {
+        "id": "A019",
+        "query": "胃部怕冷，喜温喜按，吃凉的不舒服，大便稀溏",
+        "case_type": "paraphrase",
+        "expected": "脾胃虚寒",
+        "top1": "脾胃虚寒",
+        "top3": [
+          "脾胃虚寒",
+          "风寒感冒",
+          "湿热泄泻"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.7333,
+        "terms": [
+          "怕冷",
+          "腹泻"
+        ],
+        "corrections": []
+      },
+      {
+        "id": "A020",
+        "query": "胃里发凉，喜欢按着，吃凉的难受，大便稀",
+        "case_type": "colloquial",
+        "expected": "脾胃虚寒",
+        "top1": "脾胃虚寒",
+        "top3": [
+          "脾胃虚寒",
+          "食积停滞",
+          "湿热泄泻"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.3576,
+        "terms": [
+          "胃胀",
+          "腹泻"
+        ],
+        "corrections": [
+          "胃里→胃胀"
+        ]
+      },
+      {
+        "id": "A021",
+        "query": "头痛头晕，面红目赤，口苦易怒，耳鸣如潮，失眠多梦",
+        "case_type": "paraphrase",
+        "expected": "肝火上炎",
+        "top1": "肝火上炎",
+        "top3": [
+          "肝火上炎",
+          "心脾两虚",
+          "心火亢盛"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.787,
+        "terms": [
+          "头痛",
+          "头晕",
+          "口苦",
+          "心烦",
+          "失眠",
+          "多梦"
+        ],
+        "corrections": []
+      },
+      {
+        "id": "A022",
+        "query": "头胀痛，眼睛红，口苦爱发火，耳鸣，睡不着",
+        "case_type": "colloquial",
+        "expected": "肝火上炎",
+        "top1": "肝火上炎",
+        "top3": [
+          "肝火上炎",
+          "心火亢盛",
+          "肾阴亏虚"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.3682,
+        "terms": [
+          "头晕",
+          "口苦",
+          "心烦",
+          "失眠"
+        ],
+        "corrections": [
+          "头胀→头晕"
+        ]
+      },
+      {
+        "id": "A023",
+        "query": "舌尖长疮溃疡，心烦失眠，小便黄赤灼热",
+        "case_type": "paraphrase",
+        "expected": "心火亢盛",
+        "top1": "心火亢盛",
+        "top3": [
+          "心火亢盛",
+          "湿热泄泻",
+          "心脾两虚"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.7828,
+        "terms": [
+          "失眠",
+          "尿黄"
+        ],
+        "corrections": []
+      },
+      {
+        "id": "A024",
+        "query": "口舌生疮，心烦睡不着，小便黄，有灼热感",
+        "case_type": "colloquial",
+        "expected": "心火亢盛",
+        "top1": "心火亢盛",
+        "top3": [
+          "心火亢盛",
+          "肾阴亏虚",
+          "风热感冒"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.5518,
+        "terms": [
+          "口渴",
+          "心烦",
+          "失眠",
+          "尿黄",
+          "发热"
+        ],
+        "corrections": [
+          "口舌→口渴",
+          "灼热→发热"
+        ]
+      },
+      {
+        "id": "A025",
+        "query": "关节酸楚疼痛，遇冷或阴雨天加重，热敷则缓",
+        "case_type": "paraphrase",
+        "expected": "风寒湿痹（关节痛）",
+        "top1": "风寒湿痹（关节痛）",
+        "top3": [
+          "风寒湿痹（关节痛）",
+          "肺肾阴虚",
+          "痰湿咳嗽"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.7378,
+        "terms": [
+          "关节痛"
+        ],
+        "corrections": []
+      },
+      {
+        "id": "A026",
+        "query": "膝盖肩膀关节痛，阴雨天加重，热敷舒服",
+        "case_type": "colloquial",
+        "expected": "风寒湿痹（关节痛）",
+        "top1": "风寒湿痹（关节痛）",
+        "top3": [
+          "风寒湿痹（关节痛）",
+          "脾胃虚寒",
+          "肾阴亏虚"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.4959,
+        "terms": [
+          "关节痛"
+        ],
+        "corrections": []
+      },
+      {
+        "id": "A027",
+        "query": "干咳少痰带血丝，声音嘶哑，腰酸腿软，手足心热，盗汗",
+        "case_type": "paraphrase",
+        "expected": "肺肾阴虚",
+        "top1": "肺肾阴虚",
+        "top3": [
+          "肺肾阴虚",
+          "肾阴亏虚",
+          "痰湿咳嗽"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.6995,
+        "terms": [
+          "咳嗽",
+          "腰膝酸软",
+          "潮热",
+          "盗汗"
+        ],
+        "corrections": []
+      },
+      {
+        "id": "A028",
+        "query": "干咳，嗓子哑，腰酸腿软，手足心热，夜里出汗",
+        "case_type": "colloquial",
+        "expected": "肺肾阴虚",
+        "top1": "肺肾阴虚",
+        "top3": [
+          "肺肾阴虚",
+          "肾阴亏虚",
+          "痰湿咳嗽"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.4692,
+        "terms": [
+          "咳嗽",
+          "咽痛",
+          "腰膝酸软",
+          "潮热",
+          "盗汗"
+        ],
+        "corrections": [
+          "嗓子哑→嗓子疼",
+          "出汗→盗汗"
+        ]
+      },
+      {
+        "id": "A029",
+        "query": "暴饮暴食后胃胀痛，打嗝有酸腐味，不想吃饭，大便酸臭",
+        "case_type": "paraphrase",
+        "expected": "食积停滞",
+        "top1": "食积停滞",
+        "top3": [
+          "食积停滞",
+          "心脾两虚",
+          "湿热泄泻"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.8046,
+        "terms": [
+          "胃胀",
+          "反酸",
+          "食欲不振",
+          "大便酸臭"
+        ],
+        "corrections": []
+      },
+      {
+        "id": "A030",
+        "query": "吃多了胃胀，打嗝酸腐，不想吃饭，大便酸臭",
+        "case_type": "colloquial",
+        "expected": "食积停滞",
+        "top1": "食积停滞",
+        "top3": [
+          "食积停滞",
+          "心脾两虚",
+          "湿热泄泻"
+        ],
+        "top1_ok": true,
+        "top3_ok": true,
+        "confidence": 0.6192,
+        "terms": [
+          "胃胀",
+          "反酸",
+          "食欲不振",
+          "大便酸臭"
+        ],
+        "corrections": []
+      }
+    ]
+  },
+  "safety": {
+    "tp": 4,
+    "fp": 0,
+    "tn": 36,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "details": [
+      {
+        "id": "A001",
+        "query": "发烧明显，怕风，喉咙红痛，流黄浓鼻涕，口渴想喝凉水",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A002",
+        "query": "发烧怕风，咽通，黄鼻涕，想喝凉水",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A003",
+        "query": "怕冷，发热轻，无汗，流清鼻涕，咳白稀痰，不想喝水",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A004",
+        "query": "怕泠，低烧，没有汗，流清鼻子，不想喝水",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A005",
+        "query": "胃里烧灼，口臭严重，牙龈肿痛，爱喝冷饮，大便干结",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A006",
+        "query": "口臭，牙龈肿痛，爱喝冷饮，大便干",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A007",
+        "query": "情绪低落，爱叹气，两胁胀痛，喉咙有异物感",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A008",
+        "query": "总叹气，胸闷胁胀，乳房胀痛，喉咙有异物",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A009",
+        "query": "面色苍白，头晕心慌，浑身乏力，手脚发麻，记性差",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A010",
+        "query": "脸色差，头晕心慌，容易累，手脚麻",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A011",
+        "query": "腹痛就拉肚子，大便急迫，黄褐臭秽，肛门灼热，小便黄",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A012",
+        "query": "拉肚子很急，大便臭秽，肛门灼热，小便发黄",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A013",
+        "query": "心慌失眠，多梦易醒，食欲不振，饭后腹胀",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A014",
+        "query": "睡不好多梦，心慌，不想吃饭，饭后肚子胀",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A015",
+        "query": "腰膝酸软，头晕耳鸣，手脚心发热，夜间盗汗，口干",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A016",
+        "query": "腰酸，耳鸣，手足心热，睡着出汗，口干咽燥",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A017",
+        "query": "咳嗽反复，痰多色白质黏，早晨加重，胸闷身重",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A018",
+        "query": "咳嗽老不好，白痰多，胸闷身体沉重",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A019",
+        "query": "胃部怕冷，喜温喜按，吃凉的不舒服，大便稀溏",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A020",
+        "query": "胃里发凉，喜欢按着，吃凉的难受，大便稀",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A021",
+        "query": "头痛头晕，面红目赤，口苦易怒，耳鸣如潮，失眠多梦",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A022",
+        "query": "头胀痛，眼睛红，口苦爱发火，耳鸣，睡不着",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A023",
+        "query": "舌尖长疮溃疡，心烦失眠，小便黄赤灼热",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A024",
+        "query": "口舌生疮，心烦睡不着，小便黄，有灼热感",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A025",
+        "query": "关节酸楚疼痛，遇冷或阴雨天加重，热敷则缓",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A026",
+        "query": "膝盖肩膀关节痛，阴雨天加重，热敷舒服",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A027",
+        "query": "干咳少痰带血丝，声音嘶哑，腰酸腿软，手足心热，盗汗",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A028",
+        "query": "干咳，嗓子哑，腰酸腿软，手足心热，夜里出汗",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A029",
+        "query": "暴饮暴食后胃胀痛，打嗝有酸腐味，不想吃饭，大便酸臭",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "A030",
+        "query": "吃多了胃胀，打嗝酸腐，不想吃饭，大便酸臭",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "F001",
+        "query": "胸痛，呼吸困难",
+        "expected": true,
+        "actual": true
+      },
+      {
+        "id": "F002",
+        "query": "突然言语不清，一侧肢体无力",
+        "expected": true,
+        "actual": true
+      },
+      {
+        "id": "F003",
+        "query": "黑便，头晕乏力",
+        "expected": true,
+        "actual": true
+      },
+      {
+        "id": "F004",
+        "query": "持续高热不退三天",
+        "expected": true,
+        "actual": true
+      },
+      {
+        "id": "N001",
+        "query": "没有胸痛，也没有呼吸困难",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "N002",
+        "query": "无黑便，无呕血，只是有点胃胀",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "L001",
+        "query": "最近有点不舒服，说不上来哪里不舒服",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "L002",
+        "query": "感觉身体不太对劲，没有明显不适",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "L003",
+        "query": "有点累，其他都正常",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "id": "L004",
+        "query": "想咨询一下，暂时没有具体症状",
+        "expected": false,
+        "actual": false
+      }
+    ]
+  },
+  "low_confidence": {
+    "cases": 4,
+    "hits": 4,
+    "accuracy": 1.0,
+    "details": [
+      {
+        "id": "L001",
+        "query": "最近有点不舒服，说不上来哪里不舒服",
+        "confidence": 0.2084,
+        "terms": [],
+        "predicted_low": true
+      },
+      {
+        "id": "L002",
+        "query": "感觉身体不太对劲，没有明显不适",
+        "confidence": 0.1534,
+        "terms": [
+          "发热"
+        ],
+        "predicted_low": true
+      },
+      {
+        "id": "L003",
+        "query": "有点累，其他都正常",
+        "confidence": 0.0349,
+        "terms": [],
+        "predicted_low": true
+      },
+      {
+        "id": "L004",
+        "query": "想咨询一下，暂时没有具体症状",
+        "confidence": 0.0406,
+        "terms": [],
+        "predicted_low": true
+      }
+    ]
+  }
+}
