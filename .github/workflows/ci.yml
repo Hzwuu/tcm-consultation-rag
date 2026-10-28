@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: rag
+    env:
+      PYTHONPATH: src
+      PYTHONIOENCODING: utf-8
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run system tests
+        run: python tests/evaluate_system.py
+
+      - name: Run retrieval tests
+        run: python tests/evaluate_accuracy.py
+
+      - name: Run embedding tests
+        run: python tests/evaluate_embedding_retrieval.py
+
+      - name: Run ledger tests
+        run: python tests/evaluate_ledger.py
+
+      - name: Run LLM fallback tests
+        run: python tests/evaluate_llm_generation.py
+
+      - name: Validate knowledge data
+        run: |
+          python tests/validate_clinical_details.py
+          python tests/validate_knowledge_sources.py
+          python tests/validate_vector_index.py

@@ -1,33 +1,64 @@
 # TCM Consultation Agent
 
-一个面向中医健康咨询场景的学习与竞赛原型。项目包含 C/C++ 终端版和 Python 本地 RAG 版，用于演示结构化知识检索、来源展示、多轮问诊、安全分流和本地回退。
+[![CI](https://github.com/Hzwuu/tcm-consultation-rag/actions/workflows/ci.yml/badge.svg)](https://github.com/Hzwuu/tcm-consultation-rag/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB)
+![Prototype](https://img.shields.io/badge/status-learning%20prototype-orange)
 
-> 本项目不提供医学诊断或处方，不能替代医生。方剂名称只作为传统知识参考，不可自行服用。
+一个面向中医健康咨询场景的本地 RAG 原型。项目从 C/C++ 终端起步，扩展为包含结构化知识检索、来源展示、多轮问诊、安全分流和本地回退的 Python 应用。
 
-## 项目内容
+> 仅用于学习、竞赛和健康咨询辅助。本项目不提供医学诊断或处方，不能替代医生。方剂名称只作为传统知识参考，不可自行服用。
 
-- `terminal/`：V1.0 与 V1.2 C/C++ 终端程序源码和 CSV 病症数据。
-- `rag/`：Python 本地 RAG、命令行、Streamlit 网页、知识库和测试。
-- 基础知识库：15 条常见病症记录。
-- 来源版知识库：20 条带来源和审核字段的证型记录。
-- 来源索引：58 条证名与来源覆盖数据，不参与默认问诊检索。
-- 检索模式：TF-IDF 和本地哈希 Embedding。
-- 可选生成模型：DeepSeek、Kimi、通义千问的 OpenAI 兼容接口。
-- 安全机制：红旗症状优先分流、低置信度停止、模型输出过滤和本地模板回退。
-- 记录完整性：本地 SHA-256 哈希链原型，不是区块链。
+## 项目概览
+
+- 两代 C/C++ 终端：基础查询和输入容错。
+- 两套运行知识库：15 条基础库和 20 条来源版库。
+- 两种本地检索：TF-IDF 和哈希 Embedding。
+- 两个运行入口：命令行和 Streamlit。
+- 三种兼容模型：DeepSeek、Kimi 和通义千问。
+- 安全机制：红旗优先、低置信度停止、输出过滤和本地模板回退。
+- 完整性检查：SHA-256 本地哈希链原型，不是区块链。
+
+## 解决的问题
+
+1. 用户口语、同义词和错别字可能造成症状识别偏差。
+2. 通用聊天模型回答缺少受控知识上下文和可核查依据。
+3. 胸痛、呼吸困难等红旗症状必须在普通建议之前处理。
+4. 检索证据不足时不应强行给出候选证型。
+5. 本地问诊小结需要基础的改动检测机制。
 
 ## RAG 流程
 
-```text
-用户输入
-→ 同义词、错别字和否定表达处理
-→ 从当前 CSV 知识库检索 Top 3
-→ 将候选、依据、来源和追问问题装入上下文
-→ 可选大模型生成或本地模板生成
-→ 安全检查与失败回退
+```mermaid
+flowchart LR
+    A["用户自然语言"] --> B["同义词 / 错别字 / 否定处理"]
+    B --> C["本地 CSV 知识库"]
+    C --> D["TF-IDF 或 Embedding 检索"]
+    D --> E["Top 3 候选与来源"]
+    E --> F["构造 RAG 上下文"]
+    F --> G["可选大模型或本地模板"]
+    G --> H["安全与引用检查"]
+    H --> I["问诊报告"]
+    B --> J["红旗症状检查"]
+    J -->|命中| K["停止普通建议并提示线下就医"]
 ```
 
 大模型不负责知识检索、候选排序或红旗判断。
+
+## 技术栈
+
+```text
+C/C++ STL            V1.0 / V1.2 终端
+Python 3.10+         RAG、CLI、数据校验和测试
+Streamlit            Web 演示
+CSV                  结构化知识库与评测集
+JSON                 向量快照、测试报告和哈希链
+TF-IDF / 字符 n-gram 默认本地检索
+BLAKE2b              离线哈希 Embedding
+OpenAI 兼容接口       可选大模型生成
+SHA-256              问诊小结完整性检查
+```
+
+核心逻辑使用 Python 标准库实现，没有依赖 LangChain、FAISS、Chroma 或神经重排序模型。
 
 ## 快速运行
 
@@ -70,20 +101,50 @@ Set-Location .\rag
 $env:PYTHONPATH = "src"
 .\.venv\Scripts\python.exe tests\evaluate_system.py
 .\.venv\Scripts\python.exe tests\evaluate_accuracy.py
+.\.venv\Scripts\python.exe tests\evaluate_embedding_retrieval.py
 .\.venv\Scripts\python.exe tests\evaluate_ledger.py
+.\.venv\Scripts\python.exe tests\evaluate_llm_generation.py
 ```
 
 测试结果来自自建工程测试集，不代表临床有效性或真实用户准确率。
 
-## 数据与限制
+当前综合测试结果：
+
+- 明确目标检索 Top1 / Top3：16 / 16。
+- 红旗识别 Precision / Recall：1.000 / 1.000。
+- 低置信度识别：2 / 2。
+- 结构化槽位：12 / 12。
+- RAG 安全检查：5 / 5。
+
+## 项目结构
+
+```text
+.
+├── rag/
+│   ├── app/             Streamlit 页面
+│   ├── data/            知识库、评测集和向量快照
+│   ├── docs/            架构、安全、来源和运行文档
+│   ├── reports/         评测报告
+│   ├── src/tcm_agent/   RAG、问诊、安全和模型调用
+│   ├── tests/           可复跑测试和校验脚本
+│   └── tools/           知识维护和向量索引工具
+└── terminal/
+    ├── tcm_data.csv
+    ├── V1.0 源码
+    └── V1.2 源码
+```
+
+## 开发职责
+
+项目开发使用了生成式 AI 辅助代码和文档实现。提交者负责需求确定、技术方案选择、数据与安全边界、运行验证、问题反馈和最终版本整合，并能说明主要调用链和项目局限。
+
+## 已知限制
 
 - 知识库规模较小，来源版记录大多仍待中医专业审核。
 - 默认 Embedding 是依赖无模型的哈希向量，不是 BGE 等神经语义模型。
 - 没有使用外部向量数据库或神经重排序模型。
 - 没有实现自动联网检索或来源内容实时核验。
+- 否定识别只覆盖常见规则，不是完整中文语法分析。
+- 哈希链只能发现普通改动，不提供不可篡改或外部公证。
 - 项目定位为学习、竞赛和健康咨询辅助原型。
-
-## 开发说明
-
-项目开发使用了生成式 AI 辅助代码和文档实现。提交者负责需求确定、方案取舍、数据边界、运行验收和版本整合。仓库中的测试与已知局限用于说明项目当前能够验证和不能验证的范围。
 
